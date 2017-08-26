@@ -1,0 +1,196 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# Produto - MC437
+
+Essa e uma API simples para trabalhar com produtos no nosso projeto de MC437
+
+## Colecao de Produtos [/produtos]
+
+### Listar todos os produtos [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "_id": "59a0e0ad046c1110c190d353",
+                "name": "Caneca do neymar",
+                "__v": 0,
+                "enabled": true,
+                "stock": 0,
+                "dimensions": [
+                    1,
+                    1,
+                    1
+                ],
+                "brand": "",
+                "model": "",
+                "status": [
+                    "enabled"
+                ],
+                "Created_date": "2017-08-26T02:45:01.728Z"
+            },
+            {
+                "_id": "59a0e57621de56119b81f5bb",
+                "name": "Notebook",
+                "category": "Informatica",
+                "color": "Preta",
+                "year": 2017,
+                "weight": 1.4,
+                "__v": 0,
+                "enabled": true,
+                "stock": 12,
+                "dimensions": [
+                    1,
+                    1,
+                    1
+                ],
+                "brand": "MSI",
+                "model": "GS43VR",
+                "status": [
+                    "enabled"
+                ],
+                "Created_date": "2017-08-26T03:05:26.256Z"
+            }
+        ]
+
+### Criar um novo Produto [POST]
+
+Voce pode criar o seu produto usando essa acao. Ele tem como parametro 
+um objeto JSON contendo um produto com os atributos abaixo.
+O atributo dimensions deve receber um array com 3 valores
+referentes ao x, y, e z do produto.
+
++ Request (application/json)
+
+        {
+            "name": "Asus Zenfone 3 Max",
+            "category": "Celular",
+            "color": "Prata",
+            "year": 2017,
+            "weight": 0.3,
+            "enabled": true,
+            "stock": 100,
+            "dimensions": [
+                0.15,
+                0.5,
+                0.2
+            ],
+            "brand": "Asus",
+            "model": "ZC553KL",
+            "status": [
+                "enabled"
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /products/59a0e98df8d0f511d5836e91
+
+    + Body
+
+            {
+                "__v": 0,
+                "name": "Asus Zenfone 3 Max",
+                "category": "Celular",
+                "color": "Prata",
+                "year": 2017,
+                "weight": 0.3,
+                "_id": "59a0e98df8d0f511d5836e91",
+                "enabled": true,
+                "stock": 100,
+                "dimensions": [
+                    0.15,
+                    0.5,
+                    0.2
+                ],
+                "brand": "Asus",
+                "model": "ZC553KL",
+                "status": [
+                    "enabled"
+                ],
+                "Created_date": "2017-08-26T03:22:53.683Z"
+            }
+
+
+## Produto Expecifico [/produtos/PRODUCTID]
+
+### Listar o produto [GET]
+
++ Response 200 (application/json)
+
+        {
+            "_id": "59a0e98df8d0f511d5836e91",
+            "name": "Asus Zenfone 3 Max",
+            "category": "Celular",
+            "color": "Prata",
+            "year": 2017,
+            "weight": 0.3,
+            "__v": 0,
+            "enabled": true,
+            "stock": 100,
+            "dimensions": [
+                0.15,
+                0.5,
+                0.2
+            ],
+            "brand": "Asus",
+            "model": "ZC553KL",
+            "status": [
+                "enabled"
+            ],
+            "Created_date": "2017-08-26T03:22:53.683Z"
+        }
+
+### Alterar um Produto [PUT]
+
+Voce pode alterar o seu produto usando essa acao. Envie somente os campos que devem ser alterados.
+O atributo dimensions deve receber um array com 3 valores
+referentes ao x, y, e z do produto.
+
++ Request (application/json)
+
+        {
+            "color": "Preto",
+            "stock": 14
+        }
+
++ Response 200 (application/json)
+
+        {
+            "_id": "59a0e98df8d0f511d5836e91",
+            "name": "Asus Zenfone 3 Max",
+            "category": "Celular",
+            "color": "Preto",
+            "year": 2017,
+            "weight": 0.3,
+            "__v": 0,
+            "enabled": true,
+            "stock": 14,
+            "dimensions": [
+                0.15,
+                0.5,
+                0.2
+            ],
+            "brand": "Asus",
+            "model": "ZC553KL",
+            "status": [
+                "enabled"
+            ],
+            "Created_date": "2017-08-26T03:22:53.683Z"
+        }
+        
+### Remover um Produto [DELETE]
+
++ Request (application/json)
+
+        {
+        }
+
++ Response 200 (application/json)
+
+        {
+            "message": "Product successfully deleted"
+        }
