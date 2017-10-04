@@ -15,7 +15,7 @@ exports.list_all_products = function(req, res) {
 
 
 exports.create_a_product = function(req, res) {
-  var new_product = new Product(req.body);
+  var new_product = new Product(JSON.parse(Object.keys(req.body)[0]));
   new_product.save(function(err, product) {
     if (err)
       res.send(err);
@@ -34,7 +34,7 @@ exports.read_a_product = function(req, res) {
 
 
 exports.update_a_product = function(req, res) {
-  Product.findOneAndUpdate({_id: req.params.productId}, req.body, {new: true}, function(err, product) {
+  Product.findOneAndUpdate({_id: req.params.productId}, JSON.parse(Object.keys(req.body)[0]), {new: true}, function(err, product) {
     if (err)
       res.send(err);
     res.json(product);
@@ -53,5 +53,3 @@ exports.delete_a_product = function(req, res) {
     res.json({ message: 'Product successfully deleted' });
   });
 };
-
-
