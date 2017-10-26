@@ -12,4 +12,17 @@ module.exports = function(app) {
     .get(product.read_a_product)
     .put(product.update_a_product)
     .delete(product.delete_a_product);
+
+  app.route('/products/:productId/disable')
+    .put(product.disable_a_product);
+
+  app.route('/products/:productId/enable')
+    .put(product.enable_a_product);
+
+  app.route('/products/:productId/decrease/stock/:n')
+    .put(product.decrease_stock);
+
+  app.route('/products/:productId/increase/stock/:n')
+    .put(product.increase_stock);
+
 };
