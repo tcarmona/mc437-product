@@ -12,13 +12,6 @@ var ProductSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  status: {
-    type: [{
-      type: String,
-      enum: ['disabled', 'enabled']
-    }],
-    default: ['enabled']
-  },
   category: {
     type: String,
     required: 'Kindly enter the category of the product'
@@ -33,27 +26,34 @@ var ProductSchema = new Schema({
   },
   color: {
     type: String,
+    default: ''
   },
   year: {
     type: Number,
-    required: 'Kindly enter the year of the product'
+    default: ''
   },
   dimensions: {
-    type: [Number],
-    default: [1,1,1]
+    type: String,
+    default: ''
   },
   stock: {
     type: Number,
-    default: 0
+    default: 0,
+    required: 'Kindly enter the stock of the product'
   },
   weight: {
-    type: Number,
-    required: 'Kindly enter the product weight in kg'
+    type: Number
   },
   enabled: {
     type: Boolean,
     default: true
   },
+  reviews: {
+    type: [String]
+  },
+  description: {
+    type: String
+  }
 
 });
 

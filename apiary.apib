@@ -194,3 +194,67 @@ referentes ao x, y, e z do produto.
         {
             "message": "Product successfully deleted"
         }
+
+## Desabilitar Produto [/products/PRODUCTID/disable]
+
+### Desabilitar um Produto [PUT]
+
++ Request (application/json)
+
+        {
+        }
+
++ Response 200 (application/json)
+
+        {
+            "message": "Product successfully disabled"
+        }
+
+## Habilitar Produto [/products/PRODUCTID/enable]
+
+### Habilitar um Produto [PUT]
+
++ Request (application/json)
+
+        {
+        }
+
++ Response 200 (application/json)
+
+        {
+            "message": "Product successfully enabled"
+        }
+
+## Aumentar quantidade em estoque [/products/PRODUCTID/increase/stock/N]
+
+### Aumentar estoque [PUT]
+
+Para aumentar o estoque de um dado produto voce deve passar o PRODUCTID e a
+quantidade N em que deve ser aumentado o estoque.
+
++ Request (application/json)
+
+        {
+        }
+
++ Response 200 (application/json)
+
+        {
+            "message": "Stock successfully increased"
+        }
+
+### Diminuir estoque [PUT]
+
+Para dimeinuir o estoque de um dado produto voce deve passar o PRODUCTID e a
+quantidade N em que deve ser diminuido o estoque.
+
++ Request (application/json)
+
+        {
+        }
+
++ Response 200 (application/json)
+
+        {
+            "message": "Stock successfully decreased"
+        }
