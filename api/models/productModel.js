@@ -24,22 +24,26 @@ var ProductSchema = new Schema({
     type: String,
     default: ''
   },
+  price: {
+    type: Number,
+    required: 'Kindly enter the price of the product',
+    min: 0
+  },
   color: {
     type: String,
     default: ''
   },
   year: {
-    type: Number,
-    default: ''
+    type: Number
   },
   dimensions: {
-    type: String,
-    default: ''
+    type: [String],
+    default: ['1', '1', '1']
   },
   stock: {
     type: Number,
-    default: 0,
-    required: 'Kindly enter the stock of the product'
+    required: 'Kindly enter the stock of the product',
+    min: 0
   },
   weight: {
     type: Number
@@ -53,8 +57,10 @@ var ProductSchema = new Schema({
   },
   description: {
     type: String
+  },
+  img: {
+    type: [String]
   }
-
 });
 
 module.exports = mongoose.model('Products', ProductSchema);

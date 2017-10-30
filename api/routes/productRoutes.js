@@ -4,9 +4,8 @@ module.exports = function(app) {
 
   // todoList Routes
   app.route('/products')
-    .get(product.list_all_products)
+    .get(product.search)
     .post(product.create_a_product);
-
 
   app.route('/products/:productId')
     .get(product.read_a_product)
