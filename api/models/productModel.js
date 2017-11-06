@@ -60,6 +60,10 @@ var ProductSchema = new Schema({
   },
   img: {
     type: [String]
+  },
+  group: {
+    type: String,
+    default: '0'
   }
 });
 
