@@ -55,11 +55,20 @@ var ProductSchema = new Schema({
   reviews: {
     type: [String]
   },
+  rating: {
+    type: Number,
+    min: 0,
+    max: 5
+  },
   description: {
     type: String
   },
   img: {
     type: [String]
+  },
+  highlighted: {
+    type: Boolean,
+    default: false
   },
   group: {
     type: String,

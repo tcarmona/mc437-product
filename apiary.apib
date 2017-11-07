@@ -20,14 +20,18 @@ stock: { type: Number, required: 'Kindly enter the stock of the product', min: 0
 weight: { type: Number },
 enabled: { type: Boolean, default: true },
 reviews: { type: [String] },
+rating: { type: Number, min: 0, max: 5 },
 description: { type: String },
-img: { type: [String] }
+img: { type: [String] },
+highlighted: { type: Boolean, default: false },
+group: { type: String, default: '0' }
+
 
 ## Colecao de Produtos [/products]
 
 ### Listar produtos [GET]
 
-Esta requisição faz um GET em produtos e filtra a lista de acordo com os parâmetros passados na url
+Esta requisição faz um GET em produtos e filtra a lista de acordo com os parâmetros passados na url.
 Exemplo: /products/?color=Preta
 
 + Response 200 (application/json)
