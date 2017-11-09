@@ -4,7 +4,13 @@ var mongoose = require('mongoose'),
   Product = mongoose.model('Products');
 
 exports.search = function(req, res) {
-	  Product.find(req.query, function(err, product) {
+  var query = {};
+  for (var key in req.query) {
+    if (req.query.hasOwnProperty(key)) {
+      query[key] = new RegExp(req.query[key], "i");
+    }
+  }
+  Product.find(query, function(err, product) {
     if (err)
       res.send(err);
     res.json(product);
@@ -12,7 +18,6 @@ exports.search = function(req, res) {
 };
 
 exports.create_a_product = function(req, res) {
-  console.log(req.body);
   var new_product = new Product(req.body);
   new_product.save(function(err, product) {
     if (err)

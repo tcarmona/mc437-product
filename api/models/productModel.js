@@ -37,8 +37,7 @@ var ProductSchema = new Schema({
     type: Number
   },
   dimensions: {
-    type: [String],
-    default: ['1', '1', '1']
+    type: [String]
   },
   stock: {
     type: Number,
