@@ -8,4 +8,4 @@ Ele e composto por duas partes:
 
 # Documentacao da api!!!
 
-O projeto tem sua API rest totalmente documentada nesse endereco: http://docs.mc437product.apiary.io
+O projeto tem sua API rest totalmente documentada nesse endereco: https://mc437products.docs.apiary.io/#
