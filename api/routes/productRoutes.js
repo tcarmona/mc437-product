@@ -1,6 +1,7 @@
 'use strict';
 module.exports = function(app) {
   var product = require('../controllers/productController');
+  var order = require('../controllers/orderController');
 
   // todoList Routes
   app.route('/products')
@@ -23,5 +24,11 @@ module.exports = function(app) {
 
   app.route('/products/:productId/increase/stock/:n')
     .put(product.increase_stock);
+
+  app.route('/orders')
+    .post(order.create_order);
+
+  app.route('/orders/:userId')
+    .get(order.get_orders);
 
 };
