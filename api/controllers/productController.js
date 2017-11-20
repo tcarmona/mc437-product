@@ -6,10 +6,14 @@ var mongoose = require('mongoose'),
 exports.search = function(req, res) {
   var query = {};
   for (var key in req.query) {
-    if (req.query.hasOwnProperty(key)) {
+    if (req.query.hasOwnProperty(key) && (key === 'name' || key === 'category')) {
       query[key] = new RegExp(req.query[key], "i");
     }
+    else {
+      query[key] = req.query[key];
+    }
   }
+  console.log(query);
   Product.find(query, function(err, product) {
     if (err)
       res.send(err);
