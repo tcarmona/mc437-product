@@ -13,8 +13,16 @@ var OrderSchema = new Schema({
     required: 'Kindly enter the price of the order'
   },
   products: {
-    type: [Number],
+    type: [String],
     required: 'Kindly enter products'
+  },
+  paymentId: {
+    type: Number,
+    required: ''
+  },
+  shippingId: {
+    type: Number,
+    required: ''
   }
 });
 
