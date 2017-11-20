@@ -24,22 +24,25 @@ var ProductSchema = new Schema({
     type: String,
     default: ''
   },
+  price: {
+    type: Number,
+    required: 'Kindly enter the price of the product',
+    min: 0
+  },
   color: {
     type: String,
     default: ''
   },
   year: {
-    type: Number,
-    default: ''
+    type: Number
   },
   dimensions: {
-    type: String,
-    default: ''
+    type: [String]
   },
   stock: {
     type: Number,
-    default: 0,
-    required: 'Kindly enter the stock of the product'
+    required: 'Kindly enter the stock of the product',
+    min: 0
   },
   weight: {
     type: Number
@@ -51,10 +54,25 @@ var ProductSchema = new Schema({
   reviews: {
     type: [String]
   },
+  rating: {
+    type: Number,
+    min: 0,
+    max: 5
+  },
   description: {
     type: String
+  },
+  img: {
+    type: [String]
+  },
+  highlighted: {
+    type: Boolean,
+    default: false
+  },
+  group: {
+    type: String,
+    default: '0'
   }
-
 });
 
 module.exports = mongoose.model('Products', ProductSchema);

@@ -3,8 +3,18 @@
 var mongoose = require('mongoose'),
   Product = mongoose.model('Products');
 
-exports.list_all_products = function(req, res) {
-	  Product.find({}, function(err, product) {
+exports.search = function(req, res) {
+  var query = {};
+  for (var key in req.query) {
+    if (req.query.hasOwnProperty(key) && (key === 'name' || key === 'category')) {
+      query[key] = new RegExp(req.query[key], "i");
+    }
+    else {
+      query[key] = req.query[key];
+    }
+  }
+  console.log(query);
+  Product.find(query, function(err, product) {
     if (err)
       res.send(err);
     res.json(product);
@@ -12,7 +22,7 @@ exports.list_all_products = function(req, res) {
 };
 
 exports.create_a_product = function(req, res) {
-  var new_product = new Product(JSON.parse(Object.keys(req.body)[0]));
+  var new_product = new Product(req.body);
   new_product.save(function(err, product) {
     if (err)
       res.send(err);
@@ -31,7 +41,7 @@ exports.read_a_product = function(req, res) {
 
 
 exports.update_a_product = function(req, res) {
-  Product.findOneAndUpdate({_id: req.params.productId}, JSON.parse(Object.keys(req.body)[0]), {new: true}, function(err, product) {
+  Product.findOneAndUpdate({_id: req.params.productId}, req.body, {new: true}, function(err, product) {
     if (err)
       res.send(err);
     res.json(product);

@@ -5,9 +5,34 @@ HOST: http://polls.apiblueprint.org/
 
 Essa e uma API simples para trabalhar com produtos no nosso projeto de MC437
 
+Atributos possíveis para Produto:
+
+name: {type: String, required: 'Kindly enter the name of the product' },
+Created_date: { type: Date, default: Date.now },
+category: { type: String, required: 'Kindly enter the category of the product' },
+model: { type: String, default: '' },
+brand: { type: String, default: '' },
+price: { type: Number, required: 'Kindly enter the price of the product', min: 0 },
+color: { type: String, default: '' },
+year: { type: Number },
+dimensions: { type: [String], default: ['1', '1', '1'] },
+stock: { type: Number, required: 'Kindly enter the stock of the product', min: 0 },
+weight: { type: Number },
+enabled: { type: Boolean, default: true },
+reviews: { type: [String] },
+rating: { type: Number, min: 0, max: 5 },
+description: { type: String },
+img: { type: [String] },
+highlighted: { type: Boolean, default: false },
+group: { type: String, default: '0' }
+
+
 ## Colecao de Produtos [/products]
 
-### Listar todos os produtos [GET]
+### Listar produtos [GET]
+
+Esta requisição faz um GET em produtos e filtra a lista de acordo com os parâmetros passados na url.
+Exemplo: /products/?color=Preta
 
 + Response 200 (application/json)
 
@@ -17,7 +42,9 @@ Essa e uma API simples para trabalhar com produtos no nosso projeto de MC437
                 "name": "Caneca do neymar",
                 "__v": 0,
                 "enabled": true,
+                "color": "Preta",
                 "stock": 0,
+                "price": 20,
                 "dimensions": [
                     1,
                     1,
@@ -68,6 +95,7 @@ referentes ao x, y, e z do produto.
             "category": "Celular",
             "color": "Prata",
             "year": 2017,
+            "price": 20,
             "weight": 0.3,
             "enabled": true,
             "stock": 100,
@@ -97,6 +125,7 @@ referentes ao x, y, e z do produto.
                 "category": "Celular",
                 "color": "Prata",
                 "year": 2017,
+                "price": 20,
                 "weight": 0.3,
                 "_id": "59a0e98df8d0f511d5836e91",
                 "enabled": true,

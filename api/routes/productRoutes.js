@@ -1,12 +1,12 @@
 'use strict';
 module.exports = function(app) {
   var product = require('../controllers/productController');
+  var order = require('../controllers/orderController');
 
   // todoList Routes
   app.route('/products')
-    .get(product.list_all_products)
+    .get(product.search)
     .post(product.create_a_product);
-
 
   app.route('/products/:productId')
     .get(product.read_a_product)
@@ -24,5 +24,11 @@ module.exports = function(app) {
 
   app.route('/products/:productId/increase/stock/:n')
     .put(product.increase_stock);
+
+  app.route('/orders')
+    .post(order.create_order);
+
+  app.route('/orders/:userId')
+    .get(order.get_orders);
 
 };
